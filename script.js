@@ -44,6 +44,7 @@ function renderProducts() {
 // Render cart
 function renderCart() {
   cartList.innerHTML = "";
+	productList.innerHTML = "";
   const cart = getCart();
 
   cart.forEach(item => {
