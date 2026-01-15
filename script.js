@@ -1,6 +1,3 @@
-// This is the boilerplate code given for you
-// You can modify this code
-// Product data
 const products = [
   { id: 1, name: "Product 1", price: 10 },
   { id: 2, name: "Product 2", price: 20 },
@@ -25,6 +22,8 @@ function saveCart(cart) {
 
 // Render products
 function renderProducts() {
+  productList.innerHTML = ""; // prevent duplicates
+
   products.forEach(product => {
     const li = document.createElement("li");
     li.textContent = `${product.name} - $${product.price} `;
@@ -43,27 +42,27 @@ function renderProducts() {
 
 // Render cart
 function renderCart() {
-	  cartList.innerHTML = "";
-	  const cart = getCart();
-	
-	  cart.forEach(item => {
-	    const li = document.createElement("li");
-	    li.textContent = `${item.name} - $${item.price}`;
-	    cartList.appendChild(li);
-	});
+  cartList.innerHTML = "";
+  const cart = getCart();
+
+  cart.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = `${item.name} - $${item.price}`;
+    cartList.appendChild(li);
+  });
 }
 
 // Add product to cart
 function addToCart(product) {
   const cart = getCart();
-  cart.push(product);
+  cart.push(product);       // allow duplicates
   saveCart(cart);
   renderCart();
 }
 
 // Clear cart
 clearCartBtn.addEventListener("click", () => {
-  sessionStorage.removeItem("cart");
+  saveCart([]);             // safer for tests
   renderCart();
 });
 
