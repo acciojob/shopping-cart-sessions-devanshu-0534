@@ -43,15 +43,14 @@ function renderProducts() {
 
 // Render cart
 function renderCart() {
-  cartList.innerHTML = "";
-	productList.innerHTML = "";
-  const cart = getCart();
-
-  cart.forEach(item => {
-    const li = document.createElement("li");
-    li.textContent = `${item.name} - $${item.price}`;
-    cartList.appendChild(li);
-  });
+	  cartList.innerHTML = "";
+	  const cart = getCart();
+	
+	  cart.forEach(item => {
+	    const li = document.createElement("li");
+	    li.textContent = `${item.name} - $${item.price}`;
+	    cartList.appendChild(li);
+	});
 }
 
 // Add product to cart
